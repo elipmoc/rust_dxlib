@@ -1,0 +1,11 @@
+[package]
+name = "rust_dxlib"
+version = "0.1.0"
+authors = ["パン粉 ライ麦 <relipmoc101@gmail.com>"]
+
+[dependencies]
+libloading = "0.5"
+
+[lib]
+name="dxlib_rust"
+path="dxlib_rust/lib.rs"
