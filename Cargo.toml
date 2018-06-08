@@ -3,6 +3,12 @@ name = "rust_dxlib"
 version = "0.1.0"
 authors = ["パン粉 ライ麦 <relipmoc101@gmail.com>"]
 
+repository = "https://github.com/elipmoc/rust_dxlib"
+
+readme = "README.md"
+
+license = "MIT"
+
 [dependencies]
 libloading = "0.5"
 
