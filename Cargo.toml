@@ -9,8 +9,6 @@ readme = "README.md"
 
 license = "MIT"
 
-[dependencies]
-libloading = "0.5"
 
 [lib]
 name="dxlib_rust"
