@@ -3,14 +3,14 @@ DXライブラリをRustで使えるようにする。
 
 使い方
 
-extern crate dxlib_rust;
+
 
 ```Rust
+extern crate dxlib_rust;
+use dxlib_rust::dxlib;
+
 fn main(){
-  //DxライブラリのDLLを読み込んでオブジェクト化
-  let lib = dxlib::DxlibDLL::new();
-  //あとはこんな感じでdxライブラリの関数呼び出せるよ～
-  lib.dx_DxLib_Init();
+  dxlib::dx_DxLib_Init();
 }
 ```
 
