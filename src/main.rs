@@ -1,5 +1,5 @@
 extern crate dxlib_rust;
-use dxlib_rust::dxlib;
+use dxlib_rust::dxlib::*;
 
 fn main() {
     game();
@@ -7,24 +7,25 @@ fn main() {
 
 fn game() {
     unsafe {
-        // DxLibはデフォルトでフルスクリーンなのでウィンドウモードに変更
-        dxlib::dx_ChangeWindowMode(dxlib::TRUE);
+        //ウィンドウモード変更と初期化と裏画面設定
+        dx_ChangeWindowMode(TRUE);
+        dx_DxLib_Init();
+        dx_SetDrawScreen(DX_SCREEN_BACK);
 
-        // ウィンドウサイズを320x240に変更
-        // （32bit, 60fpsを指定していますがウィンドウモードでは関係ないはず）
-        dxlib::dx_SetGraphMode(320, 240, 32, 60);
+        let mut x = 0;
+        // 画像格納用ハンドル
+        let mut Handle;
+        // 画像のロード
+        Handle = dx_LoadGraph("sample_resource/hoge.png");
 
-        // DxLibの初期化
-        dxlib::dx_DxLib_Init();
+        // while( 裏画面を表画面に反映, メッセージ処理, 画面クリア )
+        while (dx_ScreenFlip() == 0 && dx_ProcessMessage() == 0 && dx_ClearDrawScreen() == 0) {
+            dx_DrawGraph(x, 100, Handle, TRUE); //画像の描画
+            dx_DrawGraph(x / 2, 200, Handle, TRUE); //画像の描画
+            dx_DrawGraph(x / 4, 300, Handle, TRUE); //画像の描画
+            x = x + 2; // xを2増やす
+        }
 
-        dxlib::dx_ClearDrawScreen();
-        // キー入力かマウス入力を待つ
-        dxlib::dx_WaitKey();
-
-        // キー入力かマウス入力を待つ
-        dxlib::dx_WaitKey();
-
-        // DxLibの後処理
-        dxlib::dx_DxLib_End();
+        dx_DxLib_End(); // DXライブラリ終了処理
     }
 }
