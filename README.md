@@ -3,11 +3,17 @@ DXライブラリをRustで使えるようにする。
 
 使い方
 
+Cargo.tomlに記述
 
+```toml
+[dependencies.rust_dxlib]
+git = "https://github.com/elipmoc/rust_dxlib.git"
+```
 
+src/main.rs
 ```Rust
-extern crate dxlib_rust;
-use dxlib_rust::dxlib;
+extern crate rust_dxlib;
+use rust_dxlib::dxlib;
 
 fn main(){
   dxlib::dx_DxLib_Init();
