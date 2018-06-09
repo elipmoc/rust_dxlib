@@ -1,11 +1,7 @@
 use std::ffi::CString;
 use std::os::raw::c_char;
 
-/*dxlib const variables*/
-
-pub const TRUE: i32 = 1;
-pub const FALSE: i32 = 0;
-pub const DX_SCREEN_BACK: i32 = -2;
+pub use dxlib_const::*;
 
 /*dxlib struct types*/
 
