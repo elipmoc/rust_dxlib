@@ -11,5 +11,5 @@ license = "MIT"
 
 
 [lib]
-name="dxlib_rust"
-path="dxlib_rust/lib.rs"
+name="rust_dxlib"
+path="src/lib.rs"
