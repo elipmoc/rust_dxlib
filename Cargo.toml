@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = ["パン粉 ライ麦 <relipmoc101@gmail.com>"]
 
 repository = "https://github.com/elipmoc/rust_dxlib"
+build="build.rs"
 
 readme = "README.md"
 
