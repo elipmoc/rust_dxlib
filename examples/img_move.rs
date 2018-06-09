@@ -1,5 +1,5 @@
 extern crate rust_dxlib;
-use rust_dxlib::dxlib::*;
+use rust_dxlib::*;
 
 fn main() {
     game();

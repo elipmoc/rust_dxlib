@@ -1,17 +1,8 @@
 use std::ffi::CString;
 use std::os::raw::c_char;
 
-pub use dxlib_const::*;
-
-/*dxlib struct types*/
-
-#[repr(C)]
-pub struct RECT {
-    pub left: i32,
-    pub top: i32,
-    pub right: i32,
-    pub bottom: i32,
-}
+use const_variables::*;
+use types::*;
 
 /*dxlib function extern declaration*/
 
@@ -32,12 +23,12 @@ extern "stdcall" {
 
 /*wrapped function*/
 mod hidden {
-    use dxlib;
     use std::os::raw::c_char;
+    use types::*;
     #[link(name = "DxLib_x64")]
     #[no_mangle]
     extern "stdcall" {
-        pub fn dx_ClearDrawScreen(ClearRect: *mut dxlib::RECT) -> i32;
+        pub fn dx_ClearDrawScreen(ClearRect: *mut RECT) -> i32;
         pub fn dx_LoadGraph(FileName: *const c_char, NotUse3DFlag: i32) -> i32;
 
     }
