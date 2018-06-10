@@ -9,16 +9,27 @@ use types::*;
 #[link(name = "DxLib_x64")]
 #[no_mangle]
 extern "stdcall" {
+
+    //使用必須関数
     pub fn dx_DxLib_Init() -> i32;
-    pub fn dx_ChangeWindowMode(flag: i32) -> i32;
     pub fn dx_DxLib_End() -> i32;
     pub fn dx_ProcessMessage() -> i32;
-    pub fn dx_SetMainWindowText(WindowText: *const u8) -> i32;
-    pub fn dx_SetGraphMode(SizeX: i32, SizeY: i32, ColorBitNum: i32, RefreshRate: i32) -> i32;
-    pub fn dx_ScreenFlip() -> i32;
-    pub fn dx_WaitKey() -> i32;
+
+    //図形描画関数
     pub fn dx_DrawGraph(x: i32, y: i32, GrHandle: i32, TransFlag: i32) -> i32;
+
+    //その他画面操作系関数
+    pub fn dx_SetGraphMode(SizeX: i32, SizeY: i32, ColorBitNum: i32, RefreshRate: i32) -> i32;
     pub fn dx_SetDrawScreen(DrawScreen: i32) -> i32;
+    pub fn dx_ScreenFlip() -> i32;
+
+    //ウエイト関係の関数
+    pub fn dx_WaitKey() -> i32;
+
+    //ウインドウモード関係
+    pub fn dx_ChangeWindowMode(flag: i32) -> i32;
+    pub fn dx_SetMainWindowText(WindowText: *const u8) -> i32;
+
 }
 
 /*wrapped function*/
