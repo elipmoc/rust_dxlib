@@ -48,6 +48,13 @@ dx_func!{
     dx_DrawBoxAA(x1:f32,y1:f32,x2:f32, y2:f32, Color:u32, FillFlag:i32, LineThickness:f32)->i32;
     dx_DrawCircle(x:i32,y:i32,r:i32,Color:u32,FillFlag:i32, LineThickness:i32)->i32;
     dx_DrawCircleAA(x:f32, y:f32, r:f32,posnum:i32,Color:u32, FillFlag:i32,LineThickness:f32)->i32;
+    dx_DrawOval( x:i32, y:i32, rx:i32, ry:i32, Color:u32, FillFlag:i32, LineThickness:i32)->i32;
+    dx_DrawOvalAA( x:f32, y:f32, rx:f32, ry:f32, posnum:i32, Color:u32, FillFlag:i32, LineThickness:f32)->i32;
+    dx_DrawTriangle( x1:i32, y1:i32, x2:i32,y2:i32, x3:i32, y3:i32, Color:u32, FillFlag:i32)->i32;
+    dx_DrawTriangleAA(x1:f32, y1:f32, x2:f32, y2:f32, x3:f32,y3:f32, Color:u32, FillFlag:i32, LineThickness:f32)->i32;
+    dx_DrawPixel( x:i32, y:i32, Color:u32)->i32;
+    dx_GetPixel( x:i32, y:i32)->u32;
+
 
     dx_LoadGraph(FileName: *const c_char, NotUse3DFlag: i32) -> i32;
     wrap(FileName:&str)->i32 {
