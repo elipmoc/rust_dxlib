@@ -54,21 +54,19 @@ pub fn dx_LoadGraph(FileName: &str) -> i32 {
 }
 
 /// Rust内部で使用するUTF-8文字列をDxLibで使用されるSJIS文字列に変換し、そのポインタを得る
-/// 
+///
 /// # Arguments
 /// 
-/// * `rust_str` - 文字列（可能な場合は末尾にnull文字（`'\0'`）を付けると効率化されます。）
+/// * `rust_str` - 文字列
 /// 
 /// # Returns
 /// 
 /// * SJIS化された文字列へのポインタ
+/// 
 pub fn dx_GetSjisStrPtr(rust_str: &str) -> *const u8{
-
     let u8s = SHIFT_JIS.encode(rust_str).0;
-    if u8s.len() > 0 && u8s[u8s.len()-1] == '\0' as u8{
-        return SHIFT_JIS.encode(rust_str).0.as_ptr();
-    }else{
-        let s = &format!("{}{}",rust_str,"\0");
-        return SHIFT_JIS.encode(s).0.as_ptr();
-    }
+    let mut v = Vec::new();
+    v.extend_from_slice(&u8s);
+    v.push('\0' as u8);
+    return v.as_ptr();
 }
