@@ -659,21 +659,3 @@ pub fn dx_ClearDrawScreen() -> i32 {
 pub fn dx_LoadGraph(FileName: &str) -> i32 {
     unsafe { hidden::dx_LoadGraph(CString::new(FileName).unwrap().as_ptr(), FALSE) }
 }
-
-/// Rust内部で使用するUTF-8文字列をDxLibで使用されるSJIS文字列に変換し、そのポインタを得る
-///
-/// # Arguments
-/// 
-/// * `rust_str` - 文字列
-/// 
-/// # Returns
-/// 
-/// * SJIS化された文字列へのポインタ
-/// 
-pub fn dx_GetSjisStrPtr(rust_str: &str) -> *const u8{
-    let u8s = SHIFT_JIS.encode(rust_str).0;
-    let mut v = Vec::new();
-    v.extend_from_slice(&u8s);
-    v.push('\0' as u8);
-    return v.as_ptr();
-}
