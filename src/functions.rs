@@ -19,7 +19,7 @@ extern "stdcall" {
     pub fn dx_WaitKey() -> i32;
     pub fn dx_DrawGraph(x: i32, y: i32, GrHandle: i32, TransFlag: i32) -> i32;
     pub fn dx_SetDrawScreen(DrawScreen: i32) -> i32;
-    pub fn dx_GetColor(Red: i32, Green: i32, Blue: i32) -> u32;
+    pub fn dx_GetColor(Red: i32, Green: i32, Blue: i32) -> Color;
 }
 
 /*wrapped function*/
