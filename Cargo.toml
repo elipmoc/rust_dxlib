@@ -14,3 +14,6 @@ license = "MIT"
 [lib]
 name="rust_dxlib"
 path="src/lib.rs"
+
+[dependencies]
+encoding_rs = "0.8.26"
