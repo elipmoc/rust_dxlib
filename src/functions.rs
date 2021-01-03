@@ -128,7 +128,7 @@ extern "stdcall" {
     // 文字描画関係関数
 
     /// 文字列を描画する
-    pub fn dx_DrawString(x: i32 , y: i32 , string: *const u8, color: Color ) -> i32;
+    pub fn dx_DrawString(x: i32 , y: i32 , string: *const c_char, color: Color ) -> i32;
 	/// 書式付き文字列を描画する
 	//pub fn dx_DrawFormatString() -> i32;
 	/// DrawString で描画される文字列の幅(ドット単位)を得る
@@ -445,7 +445,7 @@ extern "stdcall" {
 	/// ウインドウモード・フルスクリーンモードの変更を行う
     pub fn dx_ChangeWindowMode(flag: i32) -> i32;
 	/// ウインドウのタイトルを変更する
-    pub fn dx_SetMainWindowText(WindowText: *const u8) -> i32;
+    pub fn dx_SetMainWindowText(WindowText: *const c_char) -> i32;
 
 	/// ウインドウのアイコンを変更する
 	//pub fn dx_SetWindowIconID() -> i32;
