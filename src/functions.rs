@@ -23,6 +23,7 @@ extern "stdcall" {
     pub fn dx_DrawGraph(x: i32, y: i32, GrHandle: i32, TransFlag: i32) -> i32;
     pub fn dx_SetDrawScreen(DrawScreen: i32) -> i32;
     pub fn dx_GetColor(Red: i32, Green: i32, Blue: i32) -> Color;
+    pub fn dx_DrawString(x: i32 , y: i32 , string: *const u8, color: Color ) -> i32;
 }
 
 /*wrapped function*/
