@@ -7,8 +7,8 @@ use std::os::raw::c_char;
 use const_variables::*;
 use types::*;
 
-/*dxlib function extern declaration*/
-
+/// dxlib function extern declaration based on Ver3.22a
+/// https://dxlib.xsrv.jp/dxfunc.html
 #[link(name = "DxLib_x64")]
 #[no_mangle]
 extern "stdcall" {
@@ -427,9 +427,9 @@ extern "stdcall" {
     // 時間関係の関数
 
 	/// ミリ秒単位の精度を持つカウンタの現在値を得る
-	//pub fn dx_GetNowCount() -> i32;
+	pub fn dx_GetNowCount() -> i32;
 	/// GetNowCountの高精度バージョン
-	//pub fn dx_GetNowHiPerformanceCount() -> i32;
+	pub fn dx_GetNowHiPerformanceCount() -> i64;
 	/// 現在時刻を取得する
 	//pub fn dx_GetDateTime() -> i32;
 
