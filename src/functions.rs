@@ -436,9 +436,9 @@ extern "stdcall" {
     // 乱数取得関数
 
 	/// 乱数を取得する
-	//pub fn dx_GetRand() -> i32;
+	pub fn dx_GetRand(rand_max: i32) -> i32;
 	/// 乱数の初期値を設定する
-	//pub fn dx_SRand() -> i32;
+	pub fn dx_SRand(seed: i32) -> i32;
 
     // ウインドウモード関係
 
