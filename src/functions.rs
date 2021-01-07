@@ -1,6 +1,3 @@
-extern crate encoding_rs;
-use self::encoding_rs::*;
-
 use std::ffi::CString;
 use std::os::raw::c_char;
 
@@ -12,47 +9,49 @@ use types::*;
 #[link(name = "DxLib_x64")]
 #[no_mangle]
 extern "stdcall" {
-    // 使用必須関数
+	// 使用必須関数
 
-    /// ライブラリの初期化
-    pub fn dx_DxLib_Init() -> i32;
-    /// ライブラリ使用の終了関数
-    pub fn dx_DxLib_End() -> i32;
-    /// ウインドウズのメッセージを処理する
-    pub fn dx_ProcessMessage() -> i32;
+	/// ライブラリの初期化
+	pub fn dx_DxLib_Init() -> i32;
+	/// ライブラリ使用の終了関数
+	pub fn dx_DxLib_End() -> i32;
+	/// ウインドウズのメッセージを処理する
+	pub fn dx_ProcessMessage() -> i32;
 
-    // ３Ｄ関係関数
+	// ３Ｄ関係関数
+	// unimplemented!();
 
-    // Live2D関係関数
+	// Live2D関係関数
+	// unimplemented!();
 
-    // 図形描画関数
+	// 図形描画関数
 
-    /// 線を描画
-    //pub fn dx_DrawLine() -> i32;
-    /// 線を描画(アンチエイリアス効果付き)
-    //pub fn dx_DrawLineAA() -> i32;
-    /// 四角を描画
-    //pub fn dx_DrawBox() -> i32;
-    /// 四角を描画(アンチエイリアス効果付き)
-    //pub fn dx_DrawBoxAA() -> i32;
-    /// 円の描画
-    //pub fn dx_DrawCircle() -> i32;
-    /// 円の描画(アンチエイリアス効果付き)
-    //pub fn dx_DrawCircleAA() -> i32;
-    /// 楕円の描画
-    //pub fn dx_DrawOval() -> i32;
-    /// 楕円の描画(アンチエイリアス効果付き)
-    //pub fn dx_DrawOvalAA() -> i32;
-    /// 三角形の描画
-    //pub fn dx_DrawTriangle() -> i32;
-    /// 三角形の描画(アンチエイリアス効果付き)
-    //pub fn dx_DrawTriangleAA() -> i32;
-    /// 点を描画する
-    //pub fn dx_DrawPixel() -> i32;
-    /// 指定点の色を取得
-    //pub fn dx_GetPixel() -> i32;
+	/// 線を描画
+	//pub fn dx_DrawLine() -> i32;
+	/// 線を描画(アンチエイリアス効果付き)
+	//pub fn dx_DrawLineAA() -> i32;
+	/// 四角を描画
+	//pub fn dx_DrawBox() -> i32;
+	/// 四角を描画(アンチエイリアス効果付き)
+	//pub fn dx_DrawBoxAA() -> i32;
+	/// 円の描画
+	//pub fn dx_DrawCircle() -> i32;
+	/// 円の描画(アンチエイリアス効果付き)
+	//pub fn dx_DrawCircleAA() -> i32;
+	/// 楕円の描画
+	//pub fn dx_DrawOval() -> i32;
+	/// 楕円の描画(アンチエイリアス効果付き)
+	//pub fn dx_DrawOvalAA() -> i32;
+	/// 三角形の描画
+	//pub fn dx_DrawTriangle() -> i32;
+	/// 三角形の描画(アンチエイリアス効果付き)
+	//pub fn dx_DrawTriangleAA() -> i32;
+	/// 点を描画する
+	//pub fn dx_DrawPixel() -> i32;
+	/// 指定点の色を取得
+	//pub fn dx_GetPixel() -> i32;
 
-    // グラフィックデータ制御関数
+	// グラフィックデータ制御関数
 
 	/// 画像ファイルを読みこんで画面に表示する
 	//pub fn dx_LoadGraphScreen() -> i32;
@@ -75,13 +74,21 @@ extern "stdcall" {
 	/// 読み込み時に画像を乗算済みα画像に変換するかを設定する
 	//pub fn dx_SetUsePremulAlphaConvertLoad() -> i32;
 	/// メモリに読みこんだグラフィックの描画
-    pub fn dx_DrawGraph(x: i32, y: i32, GrHandle: i32, TransFlag: i32) -> i32;
+	pub fn dx_DrawGraph(x: i32, y: i32, GrHandle: i32, TransFlag: i32) -> i32;
 	/// メモリに読みこんだグラフィックのＬＲ反転描画
 	//pub fn dx_DrawTurnGraph() -> i32;
 	/// メモリに読みこんだグラフィックの拡大縮小描画
 	//pub fn dx_DrawExtendGraph() -> i32;
 	/// メモリに読みこんだグラフィックの回転描画
-	//pub fn dx_DrawRotaGraph() -> i32;
+	pub fn dx_DrawRotaGraph(
+		x: i32,
+		y: i32,
+		ex_rate: f32,
+		angle: f32,
+		gr_handle: i32,
+		trans_flag: i32,
+		turn_flag: i32,
+	) -> i32;
 	/// メモリに読みこんだグラフィックの回転描画(回転中心指定あり)
 	//pub fn dx_DrawRotaGraph2() -> i32;
 	/// メモリに読みこんだグラフィックの回転描画(回転中心指定あり、縦横拡大率別指定)
@@ -125,10 +132,10 @@ extern "stdcall" {
 	/// 二つの画像を特殊効果付きでブレンドする( 出力先画像、使用矩形指定版 )
 	//pub fn dx_GraphBlendRectBlt() -> i32;
 
-    // 文字描画関係関数
+	// 文字描画関係関数
 
-    /// 文字列を描画する
-    pub fn dx_DrawString(x: i32 , y: i32 , string: *const c_char, color: Color ) -> i32;
+	/// 文字列を描画する
+	pub fn dx_DrawString(x: i32, y: i32, string: *const c_char, color: Color) -> i32;
 	/// 書式付き文字列を描画する
 	//pub fn dx_DrawFormatString() -> i32;
 	/// DrawString で描画される文字列の幅(ドット単位)を得る
@@ -164,18 +171,18 @@ extern "stdcall" {
 	/// フォントデータを全て初期化する
 	//pub fn dx_InitFontToHandle() -> i32;
 
-    // 簡易画面出力関数
+	// 簡易画面出力関数
 
-    //pub fn dx_() -> i32;
+	//pub fn dx_() -> i32;
 	/// 簡易文字列描画
 	//pub fn dx_printfDx() -> i32;
 	/// 簡易画面出力履歴をクリアする
 	//pub fn dx_clsDx() -> i32;
 
-    // その他画面操作系関数
+	// その他画面操作系関数
 
 	/// 画面モードの変更
-    pub fn dx_SetGraphMode(SizeX: i32, SizeY: i32, ColorBitNum: i32, RefreshRate: i32) -> i32;
+	pub fn dx_SetGraphMode(SizeX: i32, SizeY: i32, ColorBitNum: i32, RefreshRate: i32) -> i32;
 	/// フルスクリーンモード時の解像度モードを設定する
 	//pub fn dx_SetFullScreenResolutionMode() -> i32;
 	/// フルスクリーンモード時の画面拡大モードを設定する
@@ -189,15 +196,15 @@ extern "stdcall" {
 	/// 画面の背景色を設定する
 	//pub fn dx_SetBackgroundColor() -> i32;
 	/// 色コードを取得する
-    pub fn dx_GetColor(Red: i32, Green: i32, Blue: i32) -> Color;
+	pub fn dx_GetColor(Red: i32, Green: i32, Blue: i32) -> Color;
 	/// 描画先グラフィック領域の指定
-    pub fn dx_SetDrawScreen(DrawScreen: i32) -> i32;
+	pub fn dx_SetDrawScreen(DrawScreen: i32) -> i32;
 	/// フリップ関数、画面の裏ページ(普段は表示されていない)の内容を表ページ(普段表示されている)に反映する
-    pub fn dx_ScreenFlip() -> i32;
+	pub fn dx_ScreenFlip() -> i32;
 	/// 画面のフルスクリーンアンチエイリアスモードの設定をする
-    //pub fn dx_SetFullSceneAntiAliasingMode() -> i32;
+	//pub fn dx_SetFullSceneAntiAliasingMode() -> i32;
 
-    // 動画関係関数
+	// 動画関係関数
 
 	/// 動画ファイルの再生
 	//pub fn dx_PlayMovie() -> i32;
@@ -212,7 +219,7 @@ extern "stdcall" {
 	/// ムービーグラフィックの動画の再生状態を得る
 	//pub fn dx_GetMovieStateToGraph() -> i32;
 
-    // マスク関係関数
+	// マスク関係関数
 
 	/// マスク画面を作成する
 	//pub fn dx_CreateMaskScreen() -> i32;
@@ -245,7 +252,7 @@ extern "stdcall" {
 	/// マスクのデータをタイル上に並べた形で直接マスク画面全体に描画する
 	//pub fn dx_DrawFillMaskToDirectData() -> i32;
 
-    // 入力関係の関数
+	// 入力関係の関数
 
 	/// ジョイパッドが接続されている数を取得する
 	//pub fn dx_GetJoypadNum() -> i32;
@@ -327,7 +334,7 @@ extern "stdcall" {
 	/// 入力データの文字列を数値として取得する
 	//pub fn dx_GetKeyInputNumber() -> i32;
 
-    // 音利用関数
+	// 音利用関数
 
 	/// 音ファイルを再生する
 	//pub fn dx_PlaySoundFile() -> i32;
@@ -404,7 +411,7 @@ extern "stdcall" {
 	/// ３Ｄサウンドのリスナーの移動速度を設定する
 	//pub fn dx_Set3DSoundListenerVelocity() -> i32;
 
-    // 音楽再生関数
+	// 音楽再生関数
 
 	/// ＭＩＤＩ又はＭＰ３ファイルを演奏(再生)する
 	//pub fn dx_PlayMusic() -> i32;
@@ -415,16 +422,16 @@ extern "stdcall" {
 	/// ＭＩＤＩ又はＭＰ３ファイルの演奏(再生)の音量を設定する
 	//pub fn dx_SetVolumeMusic() -> i32;
 
-    // ウエイト関係の関数
+	// ウエイト関係の関数
 
 	/// 指定の時間だけ処理をとめる
 	//pub fn dx_WaitTimer() -> i32;
 	/// ディスプレイの垂直同期信号を指定回数待つ
 	//pub fn dx_WaitVSync() -> i32;
 	/// キーの入力待ち
-    pub fn dx_WaitKey() -> i32;
+	pub fn dx_WaitKey() -> i32;
 
-    // 時間関係の関数
+	// 時間関係の関数
 
 	/// ミリ秒単位の精度を持つカウンタの現在値を得る
 	pub fn dx_GetNowCount() -> i32;
@@ -433,19 +440,19 @@ extern "stdcall" {
 	/// 現在時刻を取得する
 	//pub fn dx_GetDateTime() -> i32;
 
-    // 乱数取得関数
+	// 乱数取得関数
 
 	/// 乱数を取得する
 	pub fn dx_GetRand(rand_max: i32) -> i32;
 	/// 乱数の初期値を設定する
 	pub fn dx_SRand(seed: i32) -> i32;
 
-    // ウインドウモード関係
+	// ウインドウモード関係
 
 	/// ウインドウモード・フルスクリーンモードの変更を行う
-    pub fn dx_ChangeWindowMode(flag: i32) -> i32;
+	pub fn dx_ChangeWindowMode(flag: i32) -> i32;
 	/// ウインドウのタイトルを変更する
-    pub fn dx_SetMainWindowText(WindowText: *const c_char) -> i32;
+	pub fn dx_SetMainWindowText(WindowText: *const c_char) -> i32;
 
 	/// ウインドウのアイコンを変更する
 	//pub fn dx_SetWindowIconID() -> i32;
@@ -454,7 +461,7 @@ extern "stdcall" {
 	/// ウインドウモードの時のウインドウの大きさと描画画面の大きさの比率を設定する
 	//pub fn dx_SetWindowSizeExtendRate() -> i32;
 
-    // 通信関係
+	// 通信関係
 
 	/// 他のマシンに接続する
 	//pub fn dx_ConnectNetWork() -> i32;
@@ -493,7 +500,7 @@ extern "stdcall" {
 	/// ＵＤＰを使用した他のマシンから受信データがあるかどうかを取得する
 	//pub fn dx_CheckNetWorkRecvUDP() -> i32;
 
-    // ファイル読み込み関係
+	// ファイル読み込み関係
 
 	/// ファイルを開く
 	//pub fn dx_FileRead_open() -> i32;
@@ -516,7 +523,7 @@ extern "stdcall" {
 	/// ファイルから書式付きデータを読み出す
 	//pub fn dx_FileRead_scanf() -> i32;
 
-    // ドット単位で画像にアクセスしたい関係
+	// ドット単位で画像にアクセスしたい関係
 
 	/// ＣＰＵで扱うイメージの読み込み
 	//pub fn dx_LoadSoftImage() -> i32;
@@ -565,7 +572,7 @@ extern "stdcall" {
 	/// ＣＰＵで扱うイメージから分割グラフィックハンドルを作成する
 	//pub fn dx_CreateDivGraphFromSoftImage() -> i32;
 
-    // 非同期読み込み関係
+	// 非同期読み込み関係
 
 	/// 非同期読み込みを行うかどうかを設定する
 	//pub fn dx_SetUseASyncLoadFlag() -> i32;
@@ -574,14 +581,14 @@ extern "stdcall" {
 	/// 行っている非同期読み込みの数を取得する
 	//pub fn dx_GetASyncLoadNum() -> i32;
 
-    // 文字関係関数
+	// 文字関係関数
 
 	/// 文字列の引数の文字コードを設定する
 	pub fn dx_SetUseCharCodeFormat(char_code_format: i32) -> i32;
 	/// 文字列の先頭の文字のバイト数を取得する
 	//pub fn dx_GetCharBytes() -> i32;
 
-    // マイナー関数
+	// マイナー関数
 
 	/// ウインドウがアクティブではない状態でも処理を続行するか、フラグをセットする
 	//pub fn dx_SetAlwaysRunFlag() -> i32;
@@ -630,32 +637,32 @@ extern "stdcall" {
 	/// ＭＩＤＩの演奏形態をセットする
 	pub fn dx_SelectMidiMode(mode: i32) -> i32;
 
-} 
+}
 
 /*wrapped function*/
 mod hidden {
-    use std::os::raw::c_char;
-    use types::*;
-    #[link(name = "DxLib_x64")]
-    #[no_mangle]
-    extern "stdcall" {
-        pub fn dx_ClearDrawScreen(ClearRect: *mut RECT) -> i32;
-        pub fn dx_LoadGraph(FileName: *const c_char, NotUse3DFlag: i32) -> i32;
+	use std::os::raw::c_char;
+	use types::*;
+	#[link(name = "DxLib_x64")]
+	#[no_mangle]
+	extern "stdcall" {
+		pub fn dx_ClearDrawScreen(ClearRect: *mut RECT) -> i32;
+		pub fn dx_LoadGraph(FileName: *const c_char, NotUse3DFlag: i32) -> i32;
 
-    }
+	}
 }
 
 /*wrap function*/
 pub fn dx_ClearDrawScreen() -> i32 {
-    let mut tmp = RECT {
-        left: -1,
-        right: -1,
-        top: -1,
-        bottom: -1,
-    };
-    unsafe { hidden::dx_ClearDrawScreen(&mut tmp) }
+	let mut tmp = RECT {
+		left: -1,
+		right: -1,
+		top: -1,
+		bottom: -1,
+	};
+	unsafe { hidden::dx_ClearDrawScreen(&mut tmp) }
 }
 
 pub fn dx_LoadGraph(FileName: &str) -> i32 {
-    unsafe { hidden::dx_LoadGraph(CString::new(FileName).unwrap().as_ptr(), FALSE) }
+	unsafe { hidden::dx_LoadGraph(CString::new(FileName).unwrap().as_ptr(), FALSE) }
 }
