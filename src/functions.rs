@@ -110,7 +110,7 @@ extern "stdcall" {
 	/// 描画モードをセットする
 	//pub fn dx_SetDrawMode() -> i32;
 	/// 描画の際のブレンドモードをセットする
-	//pub fn dx_SetDrawBlendMode() -> i32;
+	pub fn dx_SetDrawBlendMode(blend_mode: i32, pal: i32) -> i32;
 	/// 描画輝度をセット
 	//pub fn dx_SetDrawBright() -> i32;
 	/// グラフィックに設定する透過色をセットする
