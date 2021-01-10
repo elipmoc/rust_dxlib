@@ -4,8 +4,8 @@ use std::os::raw::c_char;
 use const_variables::*;
 use types::*;
 
-/// dxlib function extern declaration based on Ver3.22a
-/// https://dxlib.xsrv.jp/dxfunc.html
+/// dxlib function extern declaration (based on Ver3.22a)
+/// see: https://dxlib.xsrv.jp/dxfunc.html
 #[link(name = "DxLib_x64")]
 #[no_mangle]
 extern "stdcall" {
@@ -27,13 +27,13 @@ extern "stdcall" {
 	// 図形描画関数
 
 	/// 線を描画
-	//pub fn dx_DrawLine() -> i32;
+	pub fn dx_DrawLine(x1:i32 , y1:i32 , x2:i32 ,  y2:i32 , color: Color) -> i32;
 	/// 線を描画(アンチエイリアス効果付き)
-	//pub fn dx_DrawLineAA() -> i32;
+	pub fn dx_DrawLineAA(x1:f32 , y1:f32 , x2:f32 ,  y2:f32 , color: Color) -> i32;
 	/// 四角を描画
-	//pub fn dx_DrawBox() -> i32;
+	pub fn dx_DrawBox(x1:i32 , y1:i32 , x2:i32 , y2:i32 ,color: Color , fill_flag:i32) -> i32;
 	/// 四角を描画(アンチエイリアス効果付き)
-	//pub fn dx_DrawBoxAA() -> i32;
+	pub fn dx_DrawBoxAA(x1:f32 , y1:f32 , x2:f32 , y2:f32 ,color: Color , fill_flag:i32) -> i32;
 	/// 円の描画
 	//pub fn dx_DrawCircle() -> i32;
 	/// 円の描画(アンチエイリアス効果付き)
