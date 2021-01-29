@@ -35,9 +35,9 @@ extern "stdcall" {
 	/// 四角を描画(アンチエイリアス効果付き)
 	pub fn dx_DrawBoxAA(x1:f32 , y1:f32 , x2:f32 , y2:f32 ,color: Color , fill_flag:i32) -> i32;
 	/// 円の描画
-	//pub fn dx_DrawCircle() -> i32;
+	pub fn dx_DrawCircle(x:i32 ,y:i32 , r:i32 , color:Color, fill_flag:i32) -> i32;
 	/// 円の描画(アンチエイリアス効果付き)
-	//pub fn dx_DrawCircleAA() -> i32;
+	pub fn dx_DrawCircleAA(x:f32 , y:f32 , r:f32 , pos_num:i32 , color:Color, fill_flag:i32) -> i32;
 	/// 楕円の描画
 	//pub fn dx_DrawOval() -> i32;
 	/// 楕円の描画(アンチエイリアス効果付き)
