@@ -90,8 +90,8 @@ extern "stdcall" {
 	pub fn dx_DrawRotaGraph(
 		x: i32,
 		y: i32,
-		ex_rate: f32,
-		angle: f32,
+		ex_rate: f64,
+		angle: f64,
 		gr_handle: i32,
 		trans_flag: i32,
 		turn_flag: i32,
