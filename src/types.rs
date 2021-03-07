@@ -7,3 +7,5 @@ pub struct RECT {
     pub right: i32,
     pub bottom: i32,
 }
+
+pub type Color = u32;
